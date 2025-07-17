@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:dbus/dbus.dart';
 import 'package:meta/meta.dart';
-import 'package:package_info_plus/package_info_plus.dart';
+
+// import 'package:package_info_plus/package_info_plus.dart';
 import 'package:wakelock_plus_platform_interface/wakelock_plus_platform_interface.dart';
 
 /// The Linux implementation of the [WakelockPlusPlatformInterface].
@@ -17,8 +18,7 @@ class WakelockPlusLinuxPlugin extends WakelockPlusPlatformInterface {
   }
 
   /// Constructs an instance of [WakelockPlusLinuxPlugin].
-  WakelockPlusLinuxPlugin({@visibleForTesting DBusRemoteObject? object})
-      : _object = object ?? _createRemoteObject();
+  WakelockPlusLinuxPlugin({@visibleForTesting DBusRemoteObject? object}) : _object = object ?? _createRemoteObject();
 
   final DBusRemoteObject _object;
   int? _cookie;
@@ -31,8 +31,9 @@ class WakelockPlusLinuxPlugin extends WakelockPlusPlatformInterface {
     );
   }
 
-  Future<String> get _appName =>
-      PackageInfo.fromPlatform().then((info) => info.appName);
+  // Future<String> get _appName =>
+  //     PackageInfo.fromPlatform().then((info) => info.appName);
+  Future<String> get _appName => throw UnimplementedError('');
 
   @override
   Future<void> toggle({required bool enable}) async {
